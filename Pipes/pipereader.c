@@ -12,8 +12,11 @@ char* myfifo = "/tmp/myfifo";
 char buff[MAX_BUF];
 
 fd = open(myfifo, O_RDWR);
-read(fd,buff,MAX_BUF);
-printf("Writer:%s\n",buff);
+  char c;
+while(read(fd, &c, 1)){
+  write(STDOUT_FILENO, &c, 1);
+}
+write(STDOUT_FILENO, "\n", 1);
 close(fd);
 return 0;
 }
