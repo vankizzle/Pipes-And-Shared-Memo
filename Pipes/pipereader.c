@@ -10,11 +10,12 @@ int main(){
 int fd;
 char* myfifo = "/tmp/myfifo";
 char buff[MAX_BUF];
+char tmpchar;
 
 fd = open(myfifo, O_RDWR);
-  char c;
-while(read(fd, &c, 1)){
-  write(STDOUT_FILENO, &c, 1);
+  
+while(read(fd, &tmpchar, 1)){
+  write(STDOUT_FILENO, &tmpchar, 1);
 }
 write(STDOUT_FILENO, "\n", 1);
 close(fd);
